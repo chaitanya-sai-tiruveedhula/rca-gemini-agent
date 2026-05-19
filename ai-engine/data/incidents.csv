@@ -1,0 +1,6 @@
+incident_id,description,root_cause,resolution,category,severity
+101,CPU usage high in app server,Thread leak,Restart service & patch,Infrastructure,High
+102,DB timeout issue,DB overload,Increase pool & optimize query,Database,Critical
+103,Disk full alert,Log rotation failure,Clear logs & enable rotation,Storage,Medium
+104,App crash during login,Null pointer bug,Fix code & redeploy,Application,Critical
+105,Slow response time,High memory usage,Restart app & scale memory,Performance,High
