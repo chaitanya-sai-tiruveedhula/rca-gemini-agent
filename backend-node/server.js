@@ -1,10 +1,13 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 app.post("/analyze", async (req, res) => {
     try {
@@ -15,4 +18,8 @@ app.post("/analyze", async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log("Server running on 3000"));
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
+});
+
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));

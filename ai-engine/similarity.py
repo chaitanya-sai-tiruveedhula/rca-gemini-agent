@@ -1,9 +1,11 @@
 import pandas as pd
+from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 def find_similar(incident_text):
-    df = pd.read_csv("data/incidents.csv")
+    data_path = Path(__file__).resolve().parent / "data" / "incidents.csv"
+    df = pd.read_csv(data_path)
 
     vectorizer = TfidfVectorizer()
     vectors = vectorizer.fit_transform(df["description"].tolist() + [incident_text])

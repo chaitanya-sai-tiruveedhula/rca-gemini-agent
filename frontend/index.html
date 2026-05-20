@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RCA Agent</title>
-    style.css
+  <title>RCA AI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>RCA & Problem Management Dashboard</h1>
+<header>
+  <h1>RCA & Problem Management AI</h1>
+</header>
 
-<div class="panel">
-    <textarea id="input" placeholder="Enter Incident Details..."></textarea>
-    <button onclick="analyze()">Analyze</button>
+<div class="container">
+
+  <div class="card input-card">
+    <h2>Incident Input</h2>
+    <textarea id="incident" placeholder="Describe the incident, symptoms, and affected services"></textarea>
+    <button onclick="analyze()">Analyze Incident</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h2>Similar Incidents</h2>
+      <div id="similar"></div>
+    </div>
+
+    <div class="card">
+      <h2>AI Root Cause Analysis</h2>
+      <div id="rca"></div>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="panel">
-    <h2>Top Similar Incidents</h2>
-    <div id="similar"></div>
-</div>
-
-<div class="panel">
-    <h2>AI Root Cause Analysis</h2>
-    <div id="rca"></div>
-</div>
-
-app.jsscript>
+<script src="app.js"></script>
 </body>
 </html>
+``
