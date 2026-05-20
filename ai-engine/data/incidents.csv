@@ -4,3 +4,28 @@ incident_id,description,root_cause,resolution,category,severity
 103,Disk full alert,Log rotation failure,Clear logs & enable rotation,Storage,Medium
 104,App crash during login,Null pointer bug,Fix code & redeploy,Application,Critical
 105,Slow response time,High memory usage,Restart app & scale memory,Performance,High
+106,API rate limiting errors,Traffic spike,Implement rate limiting & scale,API,High
+107,Database connection pool exhausted,Unoptimized queries,Add connection limit & optimize,Database,Critical
+108,Microservice communication timeout,Network latency,Add retry logic & increase timeout,Network,High
+109,Memory leak in background worker,Resource not released,Review & fix resource cleanup,Application,High
+110,SSL certificate expiration error,Expired certificate,Renew certificate before expiry,Security,Critical
+111,Elasticsearch cluster down,Node failure,Restart nodes & check disk space,Infrastructure,Critical
+112,Kafka message queue stuck,Consumer lag,Restart consumer & clear queue,Middleware,High
+113,Authentication service unavailable,Service crash,Restart service & review logs,Security,Critical
+114,Cache invalidation issue,Stale data cached,Clear cache & implement TTL,Caching,Medium
+115,File upload failure permission denied,File permissions,Update directory permissions,Storage,Medium
+116,API endpoint returning 500 errors,Unhandled exception,Debug & deploy fix,Application,High
+117,Load balancer health check failing,Backend unhealthy,Restart backend services,Infrastructure,High
+118,DNS resolution failure,DNS cache poisoning,Flush DNS cache & update records,Network,Medium
+119,Webhook delivery failing,Invalid endpoint URL,Verify & update webhook URL,Integration,Medium
+120,Background job queue overflow,Processing too slow,Add more workers & optimize,Middleware,High
+121,Report generation timeout,Large dataset processing,Implement pagination & optimization,Performance,High
+122,User session expires unexpectedly,Session timeout too short,Increase session TTL,Security,Medium
+123,Email notification not sending,SMTP relay down,Restart SMTP service,Infrastructure,Medium
+124,Search functionality broken,Elasticsearch indexing failed,Rebuild index,Search,High
+125,Payment gateway connection error,API unavailable,Contact provider & failover,Integration,Critical
+126,Duplicate records in database,Unique constraint missing,Add constraint & cleanup,Database,High
+127,Mobile app crashes on startup,Version incompatibility,Update app version,Application,High
+128,Batch process taking too long,Inefficient algorithm,Optimize & parallelize,Performance,High
+129,Configuration sync failure,Service restart timing,Implement health check,Infrastructure,Medium
+130,Cross site scripting vulnerability,Input validation missing,Add input sanitization,Security,Critical
