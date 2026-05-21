@@ -4,18 +4,22 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
+const pythonService = process.env.PYTHON_SERVICE_URL || "http://127.0.0.1:5000";
 app.use(express.json());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 app.post("/analyze", async (req, res) => {
-    try {
-        const result = await axios.post("http://127.0.0.1:5000/analyze", req.body);
-        res.json(result.data);
-    } catch (err) {
-        res.status(500).send("Error processing request");
-    }
+  try {
+    const result = await axios.post(`${pythonService}/analyze`, req.body, {
+      headers: { "Content-Type": "application/json" }
+    });
+    res.json(result.data);
+  } catch (err) {
+    const message = err.response?.data?.error || err.message || "Error processing request.";
+    res.status(500).json({ error: message });
+  }
 });
 
 app.get("/*", (req, res) => {

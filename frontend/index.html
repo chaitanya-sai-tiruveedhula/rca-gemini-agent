@@ -1,42 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RCA & Problem Management AI Agent</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">RCA</span>
+        <div>
+          <h1>RCA & Problem Management AI Agent</h1>
+        </div>
+      </div>
+    </header>
 
-<header>
-  <h1>RCA & Problem Management AI Agent</h1>
-</header>
+    <main class="layout">
+      <section class="panel panel-left">
+        <div class="panel-card">
+          <div class="panel-title">
+            <h2>Incident Input</h2>
+            <span class="tag">LLM Powered</span>
+          </div>
+          <textarea id="incident" placeholder="Describe incident symptoms, affected services, timing, and impact."></textarea>
+          <div class="actions">
+            <button id="analyzeBtn" onclick="analyze()">Analyze Incident</button>
+            <button id="clearBtn" class="secondary" onclick="clearForm()">Clear</button>
+          </div>
+          <p id="error" class="toast hidden"></p>
+          <div class="meta-line">
+            <span>Proxy port: <strong>3000</strong></span>
+            <span>Python API: <strong>5000</strong></span>
+          </div>
+        </div>
 
-<div class="container">
+        <div class="panel-card card-highlight">
+          <h2>Notes</h2>
+          <ul class="checklist">
+            <li>Use concrete symptoms and affected systems.</li>
+            <li>Include recent changes and error behavior.</li>
+            <li>Review similar incidents for pattern correlation.</li>
+          </ul>
+        </div>
+      </section>
 
-  <div class="card input-card">
-    <h2>Incident Input</h2>
-    <textarea id="incident" placeholder="Describe the incident, symptoms, and affected services"></textarea>
-    <button onclick="analyze()">Analyze Incident</button>
-    <div id="error" class="error"></div>
+      <section class="panel panel-right">
+        <div class="result-grid">
+          <div class="panel-card">
+            <div class="panel-title">
+              <h2>AI Root Cause Summary</h2>
+              <span class="pill" id="statusBadge">Idle</span>
+            </div>
+            <div id="rca" class="analysis-block">
+              <p class="placeholder">Submit an incident to generate a structured LLM analysis, risk rating, and recommended actions.</p>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-title">
+              <h2>Similar Incident Matches</h2>
+            </div>
+            <div id="similar" class="similar-list">
+              <p class="placeholder">Matching incidents are displayed here to help identify repeat issues.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <h2>Similar Incidents</h2>
-      <div id="similar"></div>
-    </div>
-
-    <div class="card">
-      <h2>AI Root Cause Analysis</h2>
-      <div id="rca"></div>
-    </div>
-
-  </div>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
 ``

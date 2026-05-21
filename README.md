@@ -23,6 +23,12 @@ npm install
 setx GEMINI_API_KEY "your_api_key"
 ```
 
+4. Optionally override the Python API URL:
+
+```bash
+setx PYTHON_SERVICE_URL "http://127.0.0.1:5000"
+```
+
 ## Run
 
 1. Start the Python API:
