@@ -19,6 +19,7 @@ function clearError() {
 }
 
 function clearForm() {
+  document.getElementById("incident-id").value = "";
   document.getElementById("incident").value = "";
   rcaElement.innerHTML = `<p class="placeholder">Submit an incident to generate a structured LLM analysis, risk rating, and recommended actions.</p>`;
   similarElement.innerHTML = `<p class="placeholder">Matching incidents are displayed here to help identify repeat issues.</p>`;
@@ -42,7 +43,7 @@ function renderSimilarIncidents(incidents) {
         <div class="meta">
           <span><strong>Root cause:</strong> ${incident.root_cause || 'Unknown'}</span>
           <span><strong>Resolution:</strong> ${incident.resolution || 'N/A'}</span>
-          <span><strong>Score:</strong> ${incident.score ? incident.score.toFixed(2) : 'n/a'}</span>
+          <span><strong>Score:</strong> ${incident.score ? (incident.score * 100).toFixed(0) + '%' : 'n/a'}</span>
         </div>
       </article>
     `;
@@ -55,10 +56,10 @@ function renderRcaAnalysis(rca) {
     return;
   }
 
-  const incidentHeader = rca.incident_number ? `
+  const incidentHeader = rca.incident_number || rca.incident_id ? `
       <div class="incident-number-banner">
-        <span>Incident Number</span>
-        <strong>${rca.incident_number}</strong>
+        <span>Incident ID</span>
+        <strong>${rca.incident_number || rca.incident_id || 'N/A'}</strong>
       </div>
     ` : '';
 
@@ -107,9 +108,10 @@ function renderRcaAnalysis(rca) {
 async function analyze() {
   clearError();
   const text = document.getElementById("incident").value.trim();
+  const incidentId = document.getElementById("incident-id").value.trim();
 
-  if (!text) {
-    showError("Please enter an incident description first.");
+  if (!text && !incidentId) {
+    showError("Please enter an incident description or incident ID.");
     return;
   }
 
@@ -119,10 +121,14 @@ async function analyze() {
   similarElement.innerHTML = `<p class="placeholder">Finding matching incidents...</p>`;
 
   try {
+    const payload = { description: text };
+    if (incidentId) {
+      payload.incident_id = incidentId;
+    }
     const res = await fetch("/analyze", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ description: text })
+      body: JSON.stringify(payload)
     });
 
     const data = await res.json();

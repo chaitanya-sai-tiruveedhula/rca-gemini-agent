@@ -1,0 +1,126 @@
+incident_id,description,root_cause,resolution,category,severity
+101,CPU usage high in app server,Thread leak,Restart service & patch,Infrastructure,High
+102,DB timeout issue,DB overload,Increase pool & optimize query,Database,Critical
+103,Disk full alert,Log rotation failure,Clear logs & enable rotation,Storage,Medium
+104,App crash during login,Null pointer bug,Fix code & redeploy,Application,Critical
+105,Slow response time,High memory usage,Restart app & scale memory,Performance,High
+106,API rate limiting errors,Traffic spike,Implement rate limiting & scale,API,High
+107,Database connection pool exhausted,Unoptimized queries,Add connection limit & optimize,Database,Critical
+108,Microservice communication timeout,Network latency,Add retry logic & increase timeout,Network,High
+109,Memory leak in background worker,Resource not released,Review & fix resource cleanup,Application,High
+110,SSL certificate expired,Certificate not renewed,Renew certificate & automate renewal,Security,Critical
+111,Load balancer health check failure,Service unresponsive,Restart service & fix health check endpoint,Infrastructure,High
+112,Database replication lag,High transaction volume,Optimize queries & scale slaves,Database,High
+113,Authentication service unavailable,Service crash,Restart service & review logs,Security,Critical
+114,Cache miss rate spike,Cache invalidation bug,Deploy cache fix & warm cache,Performance,Medium
+115,File storage quota exceeded,Insufficient cleanup,Archive old files & increase quota,Storage,High
+116,API endpoint returning 500 errors,Unhandled exception,Debug & deploy fix,API,High
+117,Elastic search cluster node down,Hardware failure,Replace node & rebalance shards,Infrastructure,High
+118,Message queue backlog building up,Consumer lag,Scale consumers & optimize processing,Performance,High
+119,Batch job timeout exceeded,Long running query,Optimize query & increase timeout,Application,Medium
+120,CORS policy violation on frontend,Missing CORS headers,Add proper CORS headers to API,API,Medium
+121,Session store persistence failure,Storage backend down,Restart Redis & verify connectivity,Infrastructure,Critical
+122,Report generation taking too long,Inefficient aggregation,Optimize report query & add caching,Performance,Medium
+123,Webhook delivery failures,Network connectivity issue,Implement retry mechanism with backoff,Integration,High
+124,Docker container OOMKilled,Memory limit exceeded,Increase memory limit & optimize app,Infrastructure,High
+125,CDN cache invalidation stuck,API throttling,Batch invalidation requests & queue,Performance,Medium
+126,Duplicate records in database,Unique constraint missing,Add constraint & cleanup duplicates,Database,High
+127,Email notifications not sending,SMTP connection issue,Restart mail server & check credentials,Integration,High
+128,PDF export feature broken,Font resource missing,Install font & update export library,Application,Medium
+129,Search index out of sync,Indexing job failed,Rebuild index & fix job scheduler,Performance,High
+130,Monitor alert spam,Threshold misconfigured,Adjust thresholds & tune alerts,Operations,Low
+131,Database lock timeout,Long-running transaction,Optimize transaction & add indexes,Database,High
+132,Kubernetes pod eviction,Resource contention,Scale cluster & adjust resource limits,Infrastructure,High
+133,OAuth token validation failure,Key rotation incomplete,Update keys & restart auth service,Security,Critical
+134,WebSocket connection drops,Load balancer timeout,Configure sticky sessions & increase timeout,Network,High
+135,Metrics collection gap,Agent disconnect,Restart monitoring agent & check network,Operations,Medium
+136,Request payload too large,Client sending oversized data,Implement payload size limits & validation,API,Medium
+137,Database backup failed,Storage full,Clean storage & restart backup job,Operations,Critical
+138,Scheduled job not executing,Cron job disabled,Enable cron job & verify scheduling,Application,Medium
+139,DNS resolution timeout,DNS server overload,Implement DNS caching & failover,Network,High
+140,Configuration drift detected,Manual changes made,Sync configuration & enforce IaC,Operations,Medium
+141,Data export feature stuck,Memory exhaustion on export,Implement pagination & streaming,Performance,High
+142,Dependency version conflict,Incompatible library versions,Resolve version conflicts & update,Application,Medium
+143,Logging system overwhelmed,Excessive log volume,Implement log filtering & rotation,Operations,High
+144,Mobile app API compatibility,Deprecated endpoint usage,Update app & maintain compatibility layer,API,High
+145,Firewall rule blocking traffic,Incorrect firewall policy,Update firewall rules & whitelist IPs,Network,High
+146,Database query plan degradation,Statistics stale,Update table statistics & re-analyze,Database,High
+147,Feature flag malfunction,Flag inverted logic,Fix flag definition & redeploy,Application,Medium
+148,Rate limiting too aggressive,Threshold too low,Adjust rate limit thresholds,API,Medium
+149,Secrets vault access denied,Authentication token expired,Refresh vault token & increase TTL,Security,Critical
+150,Container registry unavailable,Storage backend failure,Restart registry & restore from backup,Infrastructure,Critical
+151,Permission denied on file access,File ownership wrong,Fix file permissions & ownership,Operations,High
+152,Performance degradation after deploy,Regression introduced,Identify regression & rollback or fix,Performance,High
+153,Service discovery lag,DNS cache not updated,Clear DNS cache & verify endpoints,Infrastructure,Medium
+154,User session timeout too short,Session TTL misconfigured,Increase session timeout,Security,Low
+155,Bulk import job failing,Data validation error,Fix data format & validation rules,Application,High
+156,Third-party API outage impact,External service down,Implement fallback & circuit breaker,Integration,High
+157,Memory pressure in shared library,Uncontrolled object creation,Implement pooling & cleanup,Performance,High
+158,Configuration key missing,Env variable not set,Set missing configuration & restart,Application,Critical
+159,Concurrent request deadlock,Lock ordering issue,Fix lock ordering & add timeouts,Application,High
+160,Storage I/O wait high,Disk performance degraded,Check disk health & optimize queries,Infrastructure,High
+161,SQL injection vulnerability,Unsanitized user input,Implement parameterized queries,Security,Critical
+162,Real-time sync out of order,Event queue sequencing issue,Fix event ordering & replay,Application,High
+163,Backup retention policy violation,Old backups not cleaned,Implement retention cleanup & archival,Operations,Medium
+164,Encryption key rotation overdue,Maintenance window missed,Schedule key rotation & execute,Security,High
+165,Connection pool depletion,Leak in connection handling,Fix connection return logic,Database,Critical
+166,Batch processing falling behind,Processing latency high,Optimize batch algorithm & parallelize,Performance,High
+167,File upload size validation bypass,Client-side only validation,Add server-side size validation,Security,High
+168,Dependency deprecation warning,Using outdated library,Update to latest stable version,Application,Low
+169,Timezone handling bug,Incorrect offset calculation,Fix timezone conversion logic,Application,Medium
+170,Service port conflict,Port already in use,Kill process or use different port,Infrastructure,High
+171,Metric cardinality explosion,Unbounded tag values,Implement tag cardinality limits,Operations,High
+172,Database table locks,Long-running ALTER TABLE,Use online schema migration tool,Database,High
+173,Circuit breaker stuck open,False positive failure,Reset circuit breaker & verify,Application,High
+174,Malformed request handling,Parser not validating input,Implement strict request validation,API,Medium
+175,Cascading service failure,Single point of failure,Add redundancy & implement fallback,Infrastructure,Critical
+176,Memory fragmentation issue,Allocator not compacting,Restart service & optimize allocator,Performance,High
+177,Token generation rate limited,Token service bottleneck,Scale token service & optimize,Security,High
+178,Index fragmentation,Many updates and deletes,Rebuild indexes & schedule maintenance,Database,Medium
+179,Race condition in initialization,Non-atomic multi-step init,Implement atomic initialization,Application,High
+180,Request routing error,Path not matching route,Fix route definition & test coverage,API,High
+181,Transaction rollback cascade,Dependent transaction failed,Implement proper error handling,Database,High
+182,Resource quota exceeded,Usage over limit,Increase quota or optimize usage,Infrastructure,High
+183,Heartbeat detection failure,Health check endpoint down,Fix health check & add monitoring,Operations,High
+184,Data consistency violation,Replication out of sync,Resync data & verify consistency,Database,Critical
+185,Timezone daylight saving transition,Time calculation wrong,Update timezone definitions,Application,Medium
+186,Connection refused error,Service not listening,Start service & verify port binding,Network,High
+187,Priority queue inversion,Low priority tasks blocking high,Implement priority queue correctly,Performance,High
+188,Temporary file cleanup failure,Temp directory full,Clean temp files & fix cleanup logic,Operations,Medium
+189,Load test induced outage,Test query impacting production,Isolate test environment & fix,Operations,Critical
+190,Version mismatch between services,API version incompatible,Update all services to compatible,API,High
+191,Regex denial of service,Complex regex pattern,Optimize regex & add timeout,Security,High
+192,Buffering timeout exceeded,Buffer accumulation too slow,Optimize buffering & reduce timeout,Performance,High
+193,Zero-copy optimization issue,Memory mapping failed,Use traditional copy & optimize,Performance,Medium
+194,Stale reference in cache,Cache not invalidated,Implement cache invalidation logic,Performance,High
+195,Null pointer reference,Missing null check,Add null check & defensive coding,Application,High
+196,HTTP header size limit,Headers exceed limit,Reduce header size or increase limit,API,Medium
+197,Task scheduling conflict,Two tasks running simultaneously,Implement distributed locking,Application,High
+198,Connection pool exhaustion,Connections not released,Implement connection timeout & monitoring,Database,Critical
+199,Async operation timeout,Operation takes too long,Optimize operation & increase timeout,Application,High
+200,Cache stampede issue,Multiple threads refresh cache,Implement cache lock & single refresh,Performance,High
+201,Message duplicate processing,No idempotency key,Implement idempotent processing,Application,High
+202,Partition key hotspot,Uneven data distribution,Repartition with better key,Database,High
+203,Slow client connection,Client network latency,Implement read timeout & reconnect,Network,Medium
+204,Too many open files,File descriptor limit exceeded,Increase ulimit & cleanup handles,Infrastructure,High
+205,Encryption algorithm weakness,Using deprecated algorithm,Migrate to stronger encryption,Security,Critical
+206,Event handler exception,Unhandled event exception,Add try-catch & logging to handler,Application,Medium
+207,Bloom filter false positives,False positive rate high,Tune filter size & hash functions,Performance,Medium
+208,Staleness threshold breach,Data older than threshold,Implement cache refresh & TTL,Performance,High
+209,Configuration hot reload,Reload causes crash,Validate config before reload,Application,High
+210,Rollback dependency missing,Old version not available,Archive all versions & test rollback,Operations,High
+211,Peer discovery lag,New peer not found,Implement peer monitoring & refresh,Infrastructure,Medium
+212,User impersonation attempt,Unauthorized privilege escalation,Fix authorization & add audit logging,Security,Critical
+213,Load spike detection delay,Auto-scaling too late,Tune scaling metrics & reduce latency,Infrastructure,High
+214,Pointer arithmetic error,Buffer overflow risk,Use safe memory operations,Security,Critical
+215,Exponential backoff miscalculation,Backoff too long,Fix backoff formula & test,Application,Medium
+216,Service graceful shutdown,Service killed ungracefully,Implement signal handlers & timeout,Operations,High
+217,Metric timestamp drift,Clock skew between systems,Sync clocks & use NTP,Operations,Medium
+218,Queue consumer lag alert,Processing slower than intake,Scale consumers & optimize,Performance,High
+219,API documentation outdated,Wrong endpoint parameters,Update docs & auto-generate from code,Documentation,Low
+220,Session fixation vulnerability,Session ID not regenerated,Regenerate session after login,Security,Critical
+221,Storage format migration,Old format causing errors,Implement migration tool & verify,Database,High
+222,Request batching error,Batch partially processed,Implement atomic batch processing,Application,High
+223,Distributed trace missing,Trace not propagated,Add trace header propagation,Observability,Medium
+224,Prometheus scrape timeout,Scrape target slow,Optimize metrics endpoint & increase,Operations,Medium
+225,ACID violation detected,Transaction isolation broken,Implement proper isolation level,Database,Critical

@@ -3,6 +3,23 @@ from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+def get_incident_by_id(incident_id):
+    """Fetch a specific incident from the database by its ID."""
+    data_path = Path(__file__).resolve().parent / "data" / "incidents.csv"
+    df = pd.read_csv(data_path)
+    
+    try:
+        # Try to convert incident_id to int if it's numeric
+        id_value = int(incident_id) if incident_id.isdigit() else incident_id
+    except (ValueError, AttributeError):
+        return None
+    
+    result = df[df["incident_id"] == id_value]
+    if result.empty:
+        return None
+    
+    return result.iloc[0].to_dict()
+
 def find_similar(incident_text):
     data_path = Path(__file__).resolve().parent / "data" / "incidents.csv"
     df = pd.read_csv(data_path)

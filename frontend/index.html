@@ -24,6 +24,7 @@
             <h2>Incident Input</h2>
             <span class="tag">LLM Powered</span>
           </div>
+          <input type="text" id="incident-id" placeholder="Incident ID (optional)" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
           <textarea id="incident" placeholder="Describe incident symptoms, affected services, timing, and impact."></textarea>
           <div class="actions">
             <button id="analyzeBtn" onclick="analyze()">Analyze Incident</button>
@@ -39,8 +40,8 @@
         <div class="panel-card card-highlight">
           <h2>Notes</h2>
           <ul class="checklist">
-            <li>Use concrete symptoms and affected systems.</li>
-            <li>Include recent changes and error behavior.</li>
+            <li>Enter an incident ID to search database, or provide a description.</li>
+            <li>Use concrete symptoms and affected systems for better analysis.</li>
             <li>Review similar incidents for pattern correlation.</li>
           </ul>
         </div>
