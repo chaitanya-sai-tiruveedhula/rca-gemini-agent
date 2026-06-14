@@ -317,6 +317,34 @@ button.secondary:hover {
   }
 }
 
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 640px) {
   .page-shell {
     padding: 18px 16px 30px;
@@ -326,5 +354,15 @@ button.secondary:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
   }
 }

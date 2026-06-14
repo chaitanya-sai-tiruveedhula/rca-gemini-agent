@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RCA Chatbot - Ask Our AI Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chatbot-style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">💬</span>
+        <div>
+          <h1>RCA Chatbot Assistant</h1>
+          <p>Describe your incident in natural language and get AI-powered analysis</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Back to Analyzer</a>
+      </nav>
+    </header>
+
+    <main class="chatbot-container">
+      <div class="chat-wrapper">
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+              <p>Hi there! 👋 I'm your RCA (Root Cause Analysis) Assistant. I'm here to help you understand what went wrong and how to fix it.</p>
+              <p>Tell me about an incident or problem you're facing. You can describe:</p>
+              <ul>
+                <li>What service or system is affected</li>
+                <li>What symptoms or errors you're seeing</li>
+                <li>When it started happening</li>
+                <li>How many users or services are impacted</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="chat-loading hidden" id="chatLoading">
+          <div class="loading-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <p>Analyzing your incident...</p>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+          <div class="input-wrapper">
+            <textarea
+              id="chatInput"
+              class="chat-input"
+              placeholder="Describe your incident here... (e.g., 'The payment service is down and users can't complete orders. Started 30 minutes ago.')"
+              rows="3"
+            ></textarea>
+            <button id="sendBtn" class="send-button" onclick="sendMessage()">
+              <span>Send</span>
+              <span class="send-icon">→</span>
+            </button>
+          </div>
+          <div class="input-hints">
+            <small>💡 Tip: Be specific about symptoms, affected services, and timing for better analysis</small>
+          </div>
+          <p id="chatError" class="toast hidden"></p>
+        </div>
+      </div>
+
+      <!-- Results Panel (Side) -->
+      <aside class="results-sidebar">
+        <div class="panel-card">
+          <div class="panel-title">
+            <h2>Analysis Results</h2>
+            <span class="pill" id="chatStatus">Ready</span>
+          </div>
+          <div id="chatResults" class="results-content">
+            <p class="placeholder">Ask me about an incident and I'll provide detailed analysis here.</p>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-title">
+            <h2>Similar Incidents</h2>
+          </div>
+          <div id="chatSimilar" class="similar-list">
+            <p class="placeholder">Similar historical incidents will appear here.</p>
+          </div>
+        </div>
+
+        <div class="panel-card card-highlight">
+          <h2>💡 How to Get Better Answers</h2>
+          <ul class="checklist">
+            <li>Include specific error messages if available</li>
+            <li>Mention when the issue started</li>
+            <li>Describe the business impact</li>
+            <li>Share any recent changes or deployments</li>
+            <li>Ask follow-up questions if you need clarification</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>

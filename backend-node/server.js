@@ -22,6 +22,18 @@ app.post("/analyze", async (req, res) => {
   }
 });
 
+app.post("/chat", async (req, res) => {
+  try {
+    const result = await axios.post(`${pythonService}/chat`, req.body, {
+      headers: { "Content-Type": "application/json" }
+    });
+    res.json(result.data);
+  } catch (err) {
+    const message = err.response?.data?.error || err.message || "Error processing request.";
+    res.status(500).json({ error: message });
+  }
+});
+
 app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
 });

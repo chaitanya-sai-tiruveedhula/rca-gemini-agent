@@ -35,15 +35,43 @@ function renderSimilarIncidents(incidents) {
 
   similarElement.innerHTML = incidents.map((incident, index) => {
     const incidentNumber = incident.incident_number || incident.incident_id || incident.id || 'N/A';
+    const source = incident.source || 'Local Database';
+    const sourceIcon = {
+      'GitHub': '🐙',
+      'Stack Overflow': '📚',
+      'CISA/NVD': '🔒',
+      'Local Database': '💾'
+    }[source] || '📌';
+    
+    // Build meta information based on source type
+    let metaHtml = '';
+    if (incident.root_cause) {
+      metaHtml += `<span><strong>Root cause:</strong> ${incident.root_cause}</span>`;
+    }
+    if (incident.resolution) {
+      metaHtml += `<span><strong>Resolution:</strong> ${incident.resolution}</span>`;
+    }
+    if (incident.score) {
+      metaHtml += `<span><strong>Similarity:</strong> ${(incident.score * 100).toFixed(0)}%</span>`;
+    } else if (incident.score === 0) {
+      metaHtml += `<span><strong>Similarity:</strong> n/a</span>`;
+    }
+    
+    // Add source-specific metadata
+    if (incident.url) {
+      metaHtml += `<span><strong>Link:</strong> <a href="${incident.url}" target="_blank">View</a></span>`;
+    }
+    if (incident.labels && incident.labels.length > 0) {
+      metaHtml += `<span><strong>Tags:</strong> ${incident.labels.join(', ')}</span>`;
+    }
+    
     return `
       <article class="similar-card">
-        <h3>Match ${index + 1}</h3>
-        <p><strong>Incident:</strong> ${incidentNumber}</p>
-        <p>${incident.description}</p>
+        <h3>Match ${index + 1} ${sourceIcon} <span style="font-size: 0.8rem; font-weight: normal;">${source}</span></h3>
+        <p><strong>ID:</strong> ${incidentNumber}</p>
+        <p>${incident.description || incident.title || 'No description available'}</p>
         <div class="meta">
-          <span><strong>Root cause:</strong> ${incident.root_cause || 'Unknown'}</span>
-          <span><strong>Resolution:</strong> ${incident.resolution || 'N/A'}</span>
-          <span><strong>Score:</strong> ${incident.score ? (incident.score * 100).toFixed(0) + '%' : 'n/a'}</span>
+          ${metaHtml}
         </div>
       </article>
     `;
@@ -109,6 +137,7 @@ async function analyze() {
   clearError();
   const text = document.getElementById("incident").value.trim();
   const incidentId = document.getElementById("incident-id").value.trim();
+  const useInternetSources = document.getElementById("useInternetSources").checked;
 
   if (!text && !incidentId) {
     showError("Please enter an incident description or incident ID.");
@@ -121,7 +150,10 @@ async function analyze() {
   similarElement.innerHTML = `<p class="placeholder">Finding matching incidents...</p>`;
 
   try {
-    const payload = { description: text };
+    const payload = { 
+      description: text,
+      use_internet_sources: useInternetSources
+    };
     if (incidentId) {
       payload.incident_id = incidentId;
     }
@@ -135,6 +167,12 @@ async function analyze() {
 
     if (!res.ok || data.error) {
       throw new Error(data.error || `Request failed with status ${res.status}`);
+    }
+
+    // Display data sources used
+    if (data.data_sources_used && data.data_sources_used.length > 0) {
+      document.getElementById("sourcesText").textContent = data.data_sources_used.join(", ");
+      document.getElementById("sourcesUsed").classList.remove("hidden");
     }
 
     renderSimilarIncidents(data.similar_incidents || []);

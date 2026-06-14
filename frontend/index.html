@@ -15,6 +15,9 @@
           <h1>RCA & Problem Management AI Agent</h1>
         </div>
       </div>
+      <nav class="nav-links">
+        <a href="chatbot.html" class="nav-link">💬 Try Chatbot</a>
+      </nav>
     </header>
 
     <main class="layout">
@@ -26,11 +29,21 @@
           </div>
           <input type="text" id="incident-id" placeholder="Incident ID (optional)" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
           <textarea id="incident" placeholder="Describe incident symptoms, affected services, timing, and impact."></textarea>
+          <div class="source-toggle">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin: 12px 0;">
+              <input type="checkbox" id="useInternetSources" checked style="width: 18px; height: 18px; cursor: pointer;">
+              <span style="font-size: 0.9rem;">🌐 Use Internet Sources (GitHub, Stack Overflow, etc.)</span>
+            </label>
+            <small style="color: #64748b; display: block; margin: 0 0 10px 26px;">Combines local database with open-source incident data</small>
+          </div>
           <div class="actions">
             <button id="analyzeBtn" onclick="analyze()">Analyze Incident</button>
             <button id="clearBtn" class="secondary" onclick="clearForm()">Clear</button>
           </div>
           <p id="error" class="toast hidden"></p>
+          <div id="sourcesUsed" class="sources-info hidden" style="margin-top: 12px; padding: 10px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;">
+            <strong>📊 Data Sources:</strong> <span id="sourcesText"></span>
+          </div>
           <div class="meta-line">
             <span>Proxy port: <strong>3000</strong></span>
             <span>Python API: <strong>5000</strong></span>
@@ -43,6 +56,7 @@
             <li>Enter an incident ID to search database, or provide a description.</li>
             <li>Use concrete symptoms and affected systems for better analysis.</li>
             <li>Review similar incidents for pattern correlation.</li>
+            <li>Enable internet sources to find solutions from GitHub, Stack Overflow, and more.</li>
           </ul>
         </div>
       </section>
